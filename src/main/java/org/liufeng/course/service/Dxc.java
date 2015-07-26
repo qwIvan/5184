@@ -3,6 +3,7 @@ package org.liufeng.course.service;
 import ivan.factory.Factory;
 import ivan.vo.VO5184;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -111,5 +112,12 @@ public class Dxc {
 		}
 		d.clear();
 		return list;
+	}
+
+	public static void main(String[] args) {
+		List<String> list = new ArrayList<String>();
+		list.add("1721505040");
+		String csny = new Dxc().spider(list, "", 10).get(0).getCsny();
+		System.out.println(csny);
 	}
 }

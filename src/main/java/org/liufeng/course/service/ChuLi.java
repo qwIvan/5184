@@ -58,7 +58,7 @@ public class ChuLi {
 		if(vo==null){
 			for(VO5184 i:get){
 				if(i.getZkzh().equals(content)){
-					System.out.println(near.remove(i)+"\tChuli.javaµÚ78ĞĞnear.remove(i)");//²âÊÔ´Ë¾äÓĞÃ»ÓĞÓÃ!!!!!!!!!!!!!!!!!!!
+					System.out.println(near.remove(i)+"\tChuli.javaç¬¬78è¡Œnear.remove(i)");//æµ‹è¯•æ­¤å¥æœ‰æ²¡æœ‰ç”¨!!!!!!!!!!!!!!!!!!!
 					vo = i;
 					break;
 				}
@@ -66,7 +66,7 @@ public class ChuLi {
 		}
 		return vo;
 	}
-	public List<String> need(){
+	public List<String> need(){//è¿”å›å¾…æŠ“å–çš„è€ƒå·åˆ—è¡¨
 		fen();
 		List<String> khlist = needName(content);
 		for(VO5184 i:near){
@@ -118,7 +118,7 @@ public class ChuLi {
 				map.put(i.getZymc(), i.getXm());
 			}else{
 				String oldStr = map.get(i.getZymc());
-				map.put(i.getZymc(), oldStr + "¡¢" + i.getXm());
+				map.put(i.getZymc(), oldStr + "ã€" + i.getXm());
 			}
 		}
 		return map;

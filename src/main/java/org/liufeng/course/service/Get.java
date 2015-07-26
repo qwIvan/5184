@@ -21,18 +21,23 @@ import org.htmlparser.filters.TagNameFilter;
 import org.htmlparser.tags.TableTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
 public class Get {
+	public static void main(String[] args) throws JSONException {
+		System.out.println(getJsonString("1721505040", "9702"));
+	}
+
 	private static JSONObject getJsonString(String zkzh,String csny) {
 		try{
-			URL url = new URL("http://www.5184.com/gk/common/get_lq.php");
+			URL url = new URL("http://www.5184.com/gk/common/get_lq_edg.php");
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-			connection.setRequestProperty("X-Requested-With","XMLHttpRequest");
+			connection.setRequestProperty("Referer","http://www.5184.com/gk/check_lq.html");
 			connection.setDoOutput(true);
 			OutputStream out = connection.getOutputStream();
-			String xh = "zkzh="+zkzh+"&csny="+csny;
+			String xh = "csny="+csny+"&zkzh="+zkzh+"&yzm=";
 			byte[] data = xh.getBytes();
 			out.write(data);
 			out.close();
@@ -82,10 +87,10 @@ public class Get {
 		NodeList nodes = parser.extractAllNodesThatMatch(filter);
 		if(nodes.size()==0)return null;
 		else{
-			String name = nodes.elementAt(0).toPlainTextString().replaceFirst("ÐÕÃû: ", "");
-			String idnum = nodes.elementAt(1).toPlainTextString().replaceFirst("Éí·ÝÖ¤ºÅ: ", "");
-			String sex = nodes.elementAt(2).toPlainTextString().replaceFirst("ÐÔ±ð: ", "");
-			String cnum = nodes.elementAt(3).toPlainTextString().replaceFirst("¿¼ÊÔºÅ: ", "");
+			String name = nodes.elementAt(0).toPlainTextString().replaceFirst("ï¿½ï¿½ï¿½ï¿½: ", "");
+			String idnum = nodes.elementAt(1).toPlainTextString().replaceFirst("ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½: ", "");
+			String sex = nodes.elementAt(2).toPlainTextString().replaceFirst("ï¿½Ô±ï¿½: ", "");
+			String cnum = nodes.elementAt(3).toPlainTextString().replaceFirst("ï¿½ï¿½ï¿½Ôºï¿½: ", "");
 			String major = nodes.elementAt(4).toPlainTextString().replaceFirst("Â¼È¡×¨Òµ: ", "");
 			NeusoftVO result = new NeusoftVO();
 			result.setName(name);

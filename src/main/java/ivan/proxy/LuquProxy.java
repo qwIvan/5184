@@ -16,7 +16,7 @@ public class LuquProxy implements LuquDAO {
 	private DataBaseConnection dbc = null ;
 	private LuquImpl dao = null ;
 	public LuquProxy(){
-		this.dbc = new DataBaseConnection() ;	// ‘⁄¥˙¿Ì¿‡÷–ÕÍ≥… ˝æ›ø‚¡¨Ω”∂‘œÛµƒ µ¿˝ªØ
+		this.dbc = new DataBaseConnection() ;	// Âú®‰ª£ÁêÜÁ±ª‰∏≠ÂÆåÊàêÊï∞ÊçÆÂ∫ìËøûÊé•ÂØπË±°ÁöÑÂÆû‰æãÂåñ
 		this.dao = new LuquImpl(this.dbc.getConnection()) ;
 	}
 	public boolean addVO(VO5184 vo) throws Exception {
@@ -55,10 +55,10 @@ public class LuquProxy implements LuquDAO {
 	}
 }
 class LuquImpl implements LuquDAO {
-	private Connection conn = null; // »Áπ˚“™œÎÕÍ≥… ˝æ›ø‚≤Ÿ◊˜‘Úøœ∂®–Ë“™ ˝æ›ø‚¡¨Ω”∂‘œÛ
+	private Connection conn = null; // Â¶ÇÊûúË¶ÅÊÉ≥ÂÆåÊàêÊï∞ÊçÆÂ∫ìÊìç‰ΩúÂàôËÇØÂÆöÈúÄË¶ÅÊï∞ÊçÆÂ∫ìËøûÊé•ÂØπË±°
 
 	public LuquImpl(Connection conn) {
-		this.conn = conn; // ”…Õ‚≤ø µ¿˝ªØ ±¥´µ›¡¨Ω”
+		this.conn = conn; // Áî±Â§ñÈÉ®ÂÆû‰æãÂåñÊó∂‰º†ÈÄíËøûÊé•
 	}
 	
 
@@ -76,7 +76,7 @@ class LuquImpl implements LuquDAO {
 			pstmt.setString(6, vo.getPcm());
 			pstmt.setString(7, vo.getZymc());
 			pstmt.setString(8, vo.getYxdm());
-			int count = pstmt.executeUpdate(); // ÷¥––∏¸–¬£¨∑µªÿ∏¸–¬µƒº«¬º ˝
+			int count = pstmt.executeUpdate(); // ÊâßË°åÊõ¥Êñ∞ÔºåËøîÂõûÊõ¥Êñ∞ÁöÑËÆ∞ÂΩïÊï∞
 			if (count > 0) {
 				flag = true;
 			}
@@ -101,7 +101,7 @@ class LuquImpl implements LuquDAO {
 			pstmt = this.conn.prepareStatement(sql);
 			pstmt.setString(1, name);
 			ResultSet rs = pstmt.executeQuery();
-			if (rs.next()) { // ±Ì æ“—æ≠≤È’“µΩ¡À
+			if (rs.next()) { // Ë°®Á§∫Â∑≤ÁªèÊü•ÊâæÂà∞‰∫Ü
 				count = rs.getInt(1);
 			}
 			rs.close();
@@ -126,7 +126,7 @@ class LuquImpl implements LuquDAO {
 			pstmt.setString(1, zkzh);
 			pstmt.setString(2, zkzh);
 			ResultSet rs = pstmt.executeQuery();
-			while (rs.next()) { // ±Ì æ“—æ≠≤È’“µΩ¡À
+			while (rs.next()) { // Ë°®Á§∫Â∑≤ÁªèÊü•ÊâæÂà∞‰∫Ü
 				VO5184 vo = new VO5184();
 				vo.setId(rs.getInt("id"));
 				vo.setName(rs.getString("name"));
