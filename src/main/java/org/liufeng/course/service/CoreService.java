@@ -1,5 +1,6 @@
 package org.liufeng.course.service;
 
+import entity.ResultProvider;
 import ivan.vo.VO5184;
 import org.liufeng.course.message.resp.Article;
 import org.liufeng.course.message.resp.NewsMessage;
@@ -93,14 +94,17 @@ public class CoreService {
 				if(content.matches("\\d{10}")){//输入准考证号
 
 
-
-
+					ResultProvider resultProvider = new ResultProvider(content, fromUserName);
+					VO5184 vo = resultProvider.self;
 
 
 //					StringBuffer sb = new StringBuffer();
 //					new Thread(new ImagePreProcess(content, sb)).start();
 					ChuLi cl = new ChuLi(content,fromUserName);
-					VO5184 vo = cl.getvo();
+					vo = cl.getvo();
+					Map<String,String> map = cl.toMap();
+
+
 					if(vo==null){
 						respContent = "暂时未有你的录取结果，可能你还未被录取，请检查准考证号是否正确，或稍后再试[衰]\n每天18:30更新录取数据";
 					}else{
@@ -116,7 +120,6 @@ public class CoreService {
 
 
 
-					Map<String,String> map = cl.toMap();
 					if(!map.isEmpty()){
 						if(vo!=null){
 							respContent += "\n\n另外我们还查到你的小伙伴：";
